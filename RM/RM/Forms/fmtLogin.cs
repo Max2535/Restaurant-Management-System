@@ -32,6 +32,18 @@ namespace RM
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            login();
+        }
+
+        private void fmtLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) {
+                login();
+            }
+        }
+
+        private void login()
+        {
             if (!DataContext.IsValidUser(txtUser.Text, txtPass.Text))
             {
                 // Creates a new instance of the XtraMessageBoxArgs class.
@@ -50,14 +62,14 @@ namespace RM
                 args.Caption = "Error";
 
                 // Sets the message to be displayed in the message box.
-                args.Text = "<b>invalid username or password<b>";
+                args.Text = "<b>username หรือ password ไม่ถูกต้อง<b>";
 
                 // Sets the buttons to be displayed in the message box.
                 args.Buttons = new DialogResult[] { DialogResult.OK, DialogResult.Cancel };
 
                 // Displays the message box with the specified arguments.
                 XtraMessageBox.Show(args);
-            }         
+            }
             else
             {
                 this.Hide();
